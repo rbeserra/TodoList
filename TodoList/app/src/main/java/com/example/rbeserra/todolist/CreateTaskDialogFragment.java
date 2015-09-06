@@ -53,8 +53,16 @@ public class CreateTaskDialogFragment  extends DialogFragment {
         builder.setView(mDialogView);
 
 
+        //create dialog
         AlertDialog dialog = builder.create();
         dialog.setCanceledOnTouchOutside(true);
+
+        /** Add slide animation
+         * Ideally I should add this style to a custom dialog theme.
+         * Since I am relying on the platform default theme, I decided to
+         * put the animation directly in the dialog.         *
+         * */
+        dialog.getWindow().setWindowAnimations(R.style.SlideDialogAnim);
 
         mAddTaskText = (EditText) mDialogView.findViewById(R.id.addTaskText);
         mTextChangedListener = getTextWatcher();

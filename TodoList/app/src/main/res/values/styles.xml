@@ -5,4 +5,8 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="SlideDialogAnim">
+        <item name="android:windowEnterAnimation">@anim/dialog_slide_top</item>
+        <item name="android:windowExitAnimation">@anim/dialog_slide_bottom</item>
+    </style>
 </resources>
