@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent" android:layout_height="wrap_content"
+    android:id="@+id/dialog_add_task">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:scrollbars="vertical"
+        android:lines="6"
+        android:gravity="top"
+        android:id="@+id/addTaskText" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addTaskText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="clickSubmitButton"
+        android:text="@string/submit"
+        android:id="@+id/buttonSubmitTask" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/buttonSubmitTask"
+        android:layout_toLeftOf="@+id/buttonSubmitTask"
+        android:layout_toStartOf="@+id/buttonSubmitTask"
+
+        android:id="@+id/color_pallete">
+        <ImageButton
+            android:id="@+id/red_button"
+            android:background="@color/red"
+            android:layout_width="@dimen/square_palette_item_size"
+            android:layout_height="@dimen/square_palette_item_size"
+            android:layout_margin="@dimen/square_palette_item_margin"
+            android:onClick="clickColor"/>
+        <ImageButton
+            android:id="@+id/orange_button"
+            android:background="@color/orange"
+            android:layout_width="@dimen/square_palette_item_size"
+            android:layout_height="@dimen/square_palette_item_size"
+            android:layout_margin="@dimen/square_palette_item_margin"
+            android:onClick="clickColor"/>
+        <ImageButton
+            android:id="@+id/green_button"
+            android:background="@color/green"
+            android:layout_width="@dimen/square_palette_item_size"
+            android:layout_height="@dimen/square_palette_item_size"
+            android:layout_margin="@dimen/square_palette_item_margin"
+            android:onClick="clickColor"/>
+        <ImageButton
+            android:id="@+id/blue_button"
+            android:background="@color/blue"
+            android:layout_width="@dimen/square_palette_item_size"
+            android:layout_height="@dimen/square_palette_item_size"
+            android:layout_margin="@dimen/square_palette_item_margin"
+            android:onClick="clickColor"/>
+        <ImageButton
+            android:id="@+id/purple_button"
+            android:background="@color/purple"
+            android:layout_width="@dimen/square_palette_item_size"
+            android:layout_height="@dimen/square_palette_item_size"
+            android:layout_margin="@dimen/square_palette_item_margin"
+            android:onClick="clickColor"/>
+    </LinearLayout>
+
+</RelativeLayout>

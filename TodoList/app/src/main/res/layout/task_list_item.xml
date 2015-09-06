@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/taskItemText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:paddingLeft="@dimen/taskTextPadding"
+        android:paddingBottom="@dimen/taskTextPadding"
+        android:paddingTop="@dimen/taskTextPadding"
+        android:paddingRight="@dimen/taskTextPaddingRight"
+        android:textSize="22sp"/>
+
+    <ImageButton
+        android:background="@drawable/ic_remove"
+        android:layout_marginRight="@dimen/closeButtonMargin"
+        android:layout_width="@dimen/closeButtonSize"
+        android:layout_height="@dimen/closeButtonSize"
+        android:id="@+id/close_item_button"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+</RelativeLayout>
