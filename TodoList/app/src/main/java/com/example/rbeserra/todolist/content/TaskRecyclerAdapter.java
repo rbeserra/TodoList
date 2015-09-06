@@ -20,6 +20,7 @@ import com.example.rbeserra.todolist.model.Colors;
  */
 public class TaskRecyclerAdapter extends RecyclerView.Adapter<TaskRecyclerAdapter.ViewHolder> {
     private final OnTaskRemovedListener mTaskRemovedListener;
+    private final OnAddCalendarEventListener mAddCalendarEventListener;
     private Cursor mCursor;
     private static final String TAG = "TaskRecyclerAdapter";
 
@@ -28,21 +29,30 @@ public class TaskRecyclerAdapter extends RecyclerView.Adapter<TaskRecyclerAdapte
     // you provide access to all the views for a data item in a view holder
     public class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
-        public TextView mTextView;
-        public ImageButton mImageButton;
-        public Long id;
+        public TextView mTaskText;
+        public ImageButton mCloseButton;
+        public ImageButton mCalendarButton;
+        public Long mId;
 
         public ViewHolder(View view) {
             super(view);
             Log.i(TAG, "view holder id: " + getItemId());
             Log.i(TAG, "view holder adapter position: " + getAdapterPosition());
-            mTextView = (TextView) view.findViewById(R.id.taskItemText);
-            mImageButton = (ImageButton) view.findViewById(R.id.close_item_button);
+            mTaskText = (TextView) view.findViewById(R.id.taskItemText);
+            mCloseButton = (ImageButton) view.findViewById(R.id.close_item_button);
+            mCalendarButton = (ImageButton) view.findViewById(R.id.addCalendarEvent);
 
-            mImageButton.setOnClickListener(new View.OnClickListener() {
+            mCloseButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mTaskRemovedListener.onTaskRemoved(id);
+                    mTaskRemovedListener.onTaskRemoved(mId);
+                }
+            });
+
+            mCalendarButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mAddCalendarEventListener.onAddCalendarEvent(mTaskText.getText());
                 }
             });
         }
@@ -50,10 +60,11 @@ public class TaskRecyclerAdapter extends RecyclerView.Adapter<TaskRecyclerAdapte
 
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public TaskRecyclerAdapter(Cursor cursor, OnTaskRemovedListener listener) {
+    public TaskRecyclerAdapter(Cursor cursor, OnTaskRemovedListener onTaskRemovedListener, OnAddCalendarEventListener calendarEventListener) {
         super();
         this.mCursor = cursor;
-        this.mTaskRemovedListener = listener;
+        this.mTaskRemovedListener = onTaskRemovedListener;
+        this.mAddCalendarEventListener = calendarEventListener;
     }
 
     @Override
@@ -75,12 +86,12 @@ public class TaskRecyclerAdapter extends RecyclerView.Adapter<TaskRecyclerAdapte
 
         mCursor.moveToPosition(position);
         Colors color = Colors.valueOf(mCursor.getString(mCursor.getColumnIndex(TodoListContract.TASK.COLUMN_NAME_COLOR)));
-        holder.id = mCursor.getLong(mCursor.getColumnIndex(TodoListContract.TASK._ID));
-        holder.mTextView.setText(mCursor.getString(mCursor.getColumnIndex(TodoListContract.TASK.COLUMN_NAME_CONTENT)));
-        holder.mTextView.setBackgroundResource(color.getResId());
+        holder.mId = mCursor.getLong(mCursor.getColumnIndex(TodoListContract.TASK._ID));
+        holder.mTaskText.setText(mCursor.getString(mCursor.getColumnIndex(TodoListContract.TASK.COLUMN_NAME_CONTENT)));
+        holder.mTaskText.setBackgroundResource(color.getResId());
 
-        holder.mTextView.setTextColor(Color.parseColor(color.getTextRgb()));
-        holder.mTextView.setVerticalScrollBarEnabled(true);
+        holder.mTaskText.setTextColor(Color.parseColor(color.getTextRgb()));
+        holder.mTaskText.setVerticalScrollBarEnabled(true);
 
 
     }
@@ -126,3 +137,4 @@ public class TaskRecyclerAdapter extends RecyclerView.Adapter<TaskRecyclerAdapte
 
     }
 }
+

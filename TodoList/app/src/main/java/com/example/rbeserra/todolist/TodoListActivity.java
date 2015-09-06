@@ -16,6 +16,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.rbeserra.todolist.content.CalendarUtils;
+import com.example.rbeserra.todolist.content.OnAddCalendarEventListener;
 import com.example.rbeserra.todolist.content.OnTaskRemovedListener;
 import com.example.rbeserra.todolist.content.TaskCursorLoader;
 import com.example.rbeserra.todolist.content.TaskRecyclerAdapter;
@@ -29,7 +31,7 @@ import java.util.Date;
  * Main Activity of the application. Uses a {@link RecyclerView} to show a list of
  * tasks added by the user. Provides the ability to add tasks (via {@link CreateTaskDialogFragment} and to remove tasks.
  */
-public class TodoListActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>, CreateTaskDialogFragment.CreateTaskDialogListener, OnTaskRemovedListener {
+public class TodoListActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>, CreateTaskDialogFragment.CreateTaskDialogListener, OnTaskRemovedListener, OnAddCalendarEventListener {
     private static final String TAG = "TodoListActivity";
 
     private RecyclerView mRecyclerView;
@@ -52,7 +54,7 @@ public class TodoListActivity extends AppCompatActivity implements LoaderManager
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        mAdapter = new TaskRecyclerAdapter(null, this);
+        mAdapter = new TaskRecyclerAdapter(null, this, this);
         mRecyclerView.setAdapter(mAdapter);
 
         mDbHelper = new TodoListDbHelper(this);
@@ -125,6 +127,11 @@ public class TodoListActivity extends AppCompatActivity implements LoaderManager
         Log.i(TAG, "Removing task with ID: " + taskId);
         new RemoveTask().execute(taskId);
 
+    }
+
+    @Override
+    public void onAddCalendarEvent(CharSequence taskText) {
+        startActivity(CalendarUtils.getIntent(taskText));
     }
 
     class RemoveTask extends AsyncTask<Long, Void, Void> {

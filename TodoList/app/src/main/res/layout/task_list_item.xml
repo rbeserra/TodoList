@@ -6,12 +6,13 @@
         android:id="@+id/taskItemText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="6dp"
-        android:paddingLeft="@dimen/taskTextPadding"
+        android:layout_marginBottom="@dimen/taskItemMarginBottom"
+        android:paddingLeft="@dimen/taskTextPaddingLeft"
         android:paddingBottom="@dimen/taskTextPadding"
         android:paddingTop="@dimen/taskTextPadding"
         android:paddingRight="@dimen/taskTextPaddingRight"
-        android:textSize="22sp"/>
+        android:minLines="2"
+        android:textSize="@dimen/taskItemTextSize"/>
 
     <ImageButton
         android:background="@drawable/ic_remove"
@@ -22,4 +23,13 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <ImageButton
+        android:background="@drawable/calendar"
+        android:layout_width="@dimen/calendarSize"
+        android:layout_height="@dimen/calendarSize"
+        android:id="@+id/addCalendarEvent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

@@ -100,7 +100,6 @@ public class CreateTaskDialogFragment  extends DialogFragment {
     }
 
     public void onClickColor(View view) {
-        Log.i(TAG, "Clicked id: " + view.getId());
         Colors color = getColor(view.getId());
         if (color != mColor) {
             setColor(color);

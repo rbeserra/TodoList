@@ -7,7 +7,12 @@
     <dimen name="closeButtonSize">24dp</dimen>
     <dimen name="closeButtonMargin">6dp</dimen>
     <dimen name="taskTextPaddingRight">36dp</dimen>
+    <dimen name="taskTextPaddingLeft">24dp</dimen>
     <dimen name="taskTextPadding">10dp</dimen>
+    <dimen name="calendarSize">24dp</dimen>
+    <dimen name="calendarMargin">6dp</dimen>
+    <dimen name="taskItemMarginBottom">6dp</dimen>
+    <dimen name="taskItemTextSize">20sp</dimen>
 
 </resources>
 
