@@ -4,6 +4,7 @@ A simple TodoList.
 ### Highlights
 - Show a list of user inputed tasks
 - Add a task to the list
+  - Users must choose a color and add at least one character to the task. 
 - Remove a task from the list
 - Store tasks
 - Add tasks to calendar
